@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+     <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js" ></script>
+		<script type="text/javascript" src="js/index.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="js/script.js"></script>
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+			  .myBtn{
+				   background: white;
+				   border: 1px solid silver;
+			   }
+			   #whtrContent{
+				   border: 1px solid silver;
+
+				   background-color: burlywood;
+			   }
+			   #whtrImg{
+				   width: 150px; height: 150px;
+				   border: 50px solid burlywood;
+			   }
+			   .cityName{
+				   font-size: 100px;
+			   }
+			   .temp{
+				   padding: 12px;
+				   background: black;
+				   color: white;
+			   }
+		  </style>
+     </head>
+     <body>
+        <div data-role="page" id="gps">
+        <br/>
+            <div data-role="header">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#gps" class="ui-btn-active ui-state-persist">GPS</a></li>
+                            <li><a href="#weather">Weather</a></li>
+                        </ul>
+                    </div>
+                </div>
+            <br />
+            <div data-role="main">
+            <div id="deviceready">
+                <button type="button" id="location" onclick="getCurrentLocation()">Get Current Location</button>
+            </div>
+            <br/>
+            <div style="text-align: center;">
+                Latitude: <div id="lat"></div>
+                Longitude: <div id="long"></div>
+            </div>
+            <br />
+            </div>
+                </div>
+
+            <div ng-app="MyApp" ng-controller="MyCont" data-role="page" id="weather">
+                <br/>
+                <div data-role="header">
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a href="#gps">GPS</a></li>
+                            <li><a href="#weather" class="ui-btn-active ui-state-persist">Weather</a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <p align = "center">
+                            <input class = "myBtn" type = "button" value = "Get Weather for Current Location" ng-click = "funGet()">
+                          </p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" id = "whtrContent">
+                        <h1 align="center">Current Tempurature</h1>
+                        <hr />
+                        <p align = "center"> <img src="http://openweathermap.org/img/w/{{ imgCode }}.png"> </p>
+                        <h1 align = "center" class = "cityName"> {{ tmp | number : 1 }}&deg;F </h1>
+                        <p align = "center"><span class = "temp"> Min Temp :  {{minTemp | number : 1 }}&deg;F </span><span class = "temp"> Max Temp :  {{maxTemp | number : 1 }}&deg;F </span> </p>
+                        <br>
+                        <div style="text-align: center;">
+                            <strong>Latitude: <div id="foo"></div>
+                            Longitude: <div id="bar"></div></strong>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </body>
+ </html>
